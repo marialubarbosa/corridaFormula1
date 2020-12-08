@@ -1,0 +1,64 @@
+@model IEnumerable<corridaFormula1.Models.corrida>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.piloto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.equipe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.posicao)
+            </th>
+            <th>pontuação </th>
+            <th>teste </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.piloto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.equipe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.posicao)
+            </td>
+            @if (item.posicao == "1")
+                {
+                    <td>50 pontos</td>
+                }else if(item.posicao == "2")
+                {
+                    <td>30 pontos</td>
+                }else if(item.posicao == "3")
+                {
+                    <td>20 pontos</td>
+                }else if(item.posicao == "4")
+                {
+                    <td>10 pontos</td>
+                }else{
+                    <td>5 pontos</td>
+                }
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

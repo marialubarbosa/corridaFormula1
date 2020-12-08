@@ -1,0 +1,48 @@
+@model corridaFormula1.Models.corrida
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>corrida</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="piloto" class="control-label"></label>
+                <input asp-for="piloto" class="form-control" />
+                <span asp-validation-for="piloto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="equipe" class="control-label"></label>
+                <input asp-for="equipe" class="form-control" />
+                <span asp-validation-for="equipe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <select asp-for="posicao" class="control-label">
+                    <option value="1">1ª posicao</option>
+                    <option value="2">2ª posicao</option>
+                    <option value="3">3ª posicao</option>
+                    <option value="4">4ª posicao</option>
+                    <option value="5">5ª posicao</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
